@@ -1,0 +1,26 @@
+﻿<Window x:Class="WS318_Project_Bowen.AddSpecialRuleWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WS318_Project_Bowen"
+        mc:Ignorable="d"
+        Title="AddSpecialRuleWindow" Height="450" Width="800">
+    <Grid>
+        <Border Grid.Row="1" Background="#191A2E" CornerRadius="8" Padding="16">
+            <StackPanel>
+                <TextBlock Text="Add Special Rule" FontWeight="Bold" FontSize="18" Foreground="#FFD700"/>
+                <Grid Height="197">
+                    <Label Content="Name" HorizontalAlignment="Left" Margin="66,21,0,0" VerticalAlignment="Top" Foreground="White"/>
+                    <TextBox x:Name="RuleName" HorizontalAlignment="Left" Margin="27,52,0,0" TextWrapping="Wrap" Text="Rule Name" VerticalAlignment="Top" Width="120"/>
+                    <Label Content="Description" HorizontalAlignment="Left" Margin="212,21,0,0" VerticalAlignment="Top" Foreground="White"/>
+                    <TextBox x:Name="RuleDescription" HorizontalAlignment="Left" Margin="170,52,0,0" TextWrapping="Wrap" Text="Short form explanation goes here." VerticalAlignment="Top" Width="154" Height="135" TextChanged="TextBox_TextChanged"/>
+                    <Label Content="Detail" HorizontalAlignment="Left" Margin="509,21,0,0" VerticalAlignment="Top" Foreground="White"/>
+                    <TextBox x:Name="RuleDetail" HorizontalAlignment="Left" Margin="357,52,0,0" TextWrapping="Wrap" Text="Long form Explanation Goes Here." VerticalAlignment="Top" Width="374" Height="135" TextChanged="TextBox_TextChanged_1"/>
+                </Grid>
+                <Button x:Name="AddRuleButton" Content="Add Rule" Width="96" Height="32" Click="Button_Click" />
+                <Label x:Name="ConfirmationLabel" Foreground="#FFF56241" FontSize="24" />
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>
