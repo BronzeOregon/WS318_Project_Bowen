@@ -2,6 +2,7 @@
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,7 +25,7 @@ namespace WS318_Project_Bowen
 
         GSchoolCWs318ProjectBowenDatabase1MdfContext dbContext = new GSchoolCWs318ProjectBowenDatabase1MdfContext();
 
-        SpecialRule selection;
+        SpecialRule selection = new SpecialRule();
 
         public EditSpecialRuleWindow()
         {
@@ -92,13 +93,13 @@ namespace WS318_Project_Bowen
 
         private void SpecialRuleGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            selection = (SpecialRule)SpecialRuleGrid.SelectedItem;
-            if (selection != null)
+            try
             {
+                selection = (SpecialRule)SpecialRuleGrid.SelectedItem;
                 RuleName.Text = selection.Name;
                 RuleDescription.Text = selection.Description;
                 RuleDetail.Text = selection.Detail;
-            }
+            } catch (Exception ex) { Debug.WriteLine(ex.Message); }
         }
     }
 }

@@ -26,4 +26,11 @@ public partial class RangedWeapon
     public virtual ICollection<RangedWeaponSpecialRule> RangedWeaponSpecialRules { get; set; } = new List<RangedWeaponSpecialRule>();
 
     public virtual ICollection<VehicleModelRangedWeapon> VehicleModelRangedWeapons { get; set; } = new List<VehicleModelRangedWeapon>();
+
+    public bool Equals(RangedWeapon obj)
+    {
+        if (obj == null) return false;
+        else if (this.Id == obj.Id) return true;
+        else return false;
+    }
 }

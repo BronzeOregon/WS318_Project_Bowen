@@ -64,7 +64,6 @@
                         <ListBoxItem>
                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                                 <TextBlock Text="Tactical Squad" FontSize="14" VerticalAlignment="Center"/>
-                                <TextBlock Text=" (200 pts)" Margin="8,0,0,0" VerticalAlignment="Center"/>
                                 <Button Width="32" Height="32" Margin="16,0,0,0">
                                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                                         <Image Source="https://img.icons8.com/ios-filled/24/ff4d4d/delete-sign.png" Width="24" Height="24"/>
@@ -75,7 +74,6 @@
                         <ListBoxItem>
                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                                 <TextBlock Text="Contemptor Dreadnought" FontSize="14" VerticalAlignment="Center"/>
-                                <TextBlock Text=" (175 pts)" Margin="8,0,0,0" VerticalAlignment="Center"/>
                                 <Button Width="32" Height="32" Margin="16,0,0,0">
                                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                                         <Image Source="https://img.icons8.com/ios-filled/24/ff4d4d/delete-sign.png" Width="24" Height="24"/>
@@ -90,9 +88,7 @@
             <!-- Summary Panel -->
             <Border Grid.Row="2" Background="#222438" CornerRadius="8" Padding="16" VerticalAlignment="Bottom">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
-                    <TextBlock Text="Total Points:" FontWeight="Bold" Foreground="White"/>
-                    <TextBlock Text="375" Margin="8,0,0,0" Foreground="#FFD700" FontWeight="Bold"/>
-                    <TextBlock Text="/ 2000" Margin="8,0,0,0" Foreground="White"/>
+                    <TextBlock Text="Unit Count: " Margin="8,0,0,0" Foreground="White"/>
                 </StackPanel>
             </Border>
         </Grid>

@@ -46,12 +46,14 @@ namespace WS318_Project_Bowen
 
         private void EditWeapon_Click(object sender, RoutedEventArgs e)
         {
-
+            EditWeaponWindow popup = new EditWeaponWindow();
+            popup.ShowDialog();
         }
 
         private void NewModel_Click(object sender, RoutedEventArgs e)
         {
-
+            AddModelWindow popup = new AddModelWindow();
+            popup.ShowDialog();
         }
 
         private void EditModel_Click(object sender, RoutedEventArgs e)

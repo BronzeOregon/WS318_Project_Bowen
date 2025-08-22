@@ -22,4 +22,11 @@ public partial class MeleeWeapon
     public string Name { get; set; } = null!;
 
     public virtual ICollection<MeleeWeaponSpecialRule> MeleeWeaponSpecialRules { get; set; } = new List<MeleeWeaponSpecialRule>();
+
+    public bool Equals(MeleeWeapon obj)
+    {
+        if (obj == null) return false;
+        else if (this.Id == obj.Id) return true;
+        else return false;
+    }
 }

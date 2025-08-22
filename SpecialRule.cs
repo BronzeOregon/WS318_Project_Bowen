@@ -20,4 +20,11 @@ public partial class SpecialRule
     public virtual ICollection<RangedWeaponSpecialRule> RangedWeaponSpecialRules { get; set; } = new List<RangedWeaponSpecialRule>();
 
     public virtual ICollection<VehicleModelSpecialRule> VehicleModelSpecialRules { get; set; } = new List<VehicleModelSpecialRule>();
+
+    public bool Equals(SpecialRule obj)
+    {
+        if (obj == null) return false;
+        else if (this.Id == obj.Id) return true;
+        else return false;
+    }
 }

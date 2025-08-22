@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WS318_Project_Bowen"
         mc:Ignorable="d"
-        Title="AddWeaponWindow" Height="450" Width="800">
+        Title="AddWeaponWindow" Height="600" Width="800">
     <Grid>
         <Border Grid.Row="1" Background="#191A2E" CornerRadius="8" Padding="16">
             <StackPanel>
@@ -13,7 +13,7 @@
                 <Grid Height="80">
                     <StackPanel Orientation="Horizontal">
                         <Label Content="Name" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" HorizontalContentAlignment="Center"/>
-                        <TextBox x:Name="WeaponName" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Rule Name" VerticalAlignment="Center" Width="120"/>
+                        <TextBox x:Name="WeaponName" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Weapon Name" VerticalAlignment="Center" Width="120"/>
                         <Label Content="RangedWeapon" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" HorizontalContentAlignment="Center"/>
                         <RadioButton x:Name="RangedWeaponCheck" HorizontalAlignment="Center" VerticalAlignment="Center" Checked="RangedWeaponCheck_Checked"/>
                         <Label Content="MeleeWeapon" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" HorizontalContentAlignment="Center"/>

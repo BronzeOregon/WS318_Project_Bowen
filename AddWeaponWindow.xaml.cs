@@ -1,18 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using Microsoft.IdentityModel.Tokens;
 
 namespace WS318_Project_Bowen
 {
@@ -21,12 +10,10 @@ namespace WS318_Project_Bowen
     /// </summary>
     public partial class AddWeaponWindow : Window
     {
-        GSchoolCWs318ProjectBowenDatabase1MdfContext dbContext = new GSchoolCWs318ProjectBowenDatabase1MdfContext();
-
         SpecialRule selection = new SpecialRule();
 
 
-        List<SpecialRule> AddedRules = new List<SpecialRule> { };
+        ObservableCollection<SpecialRule> AddedRules = new ObservableCollection<SpecialRule> { };
 
         public AddWeaponWindow()
         {
@@ -51,10 +38,6 @@ namespace WS318_Project_Bowen
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
-            using (var context = new GSchoolCWs318ProjectBowenDatabase1MdfContext())
-            {
-
-            }
 
             if (RangedWeaponCheck.IsChecked == true)
             {
@@ -74,7 +57,8 @@ namespace WS318_Project_Bowen
                     using (var context = new GSchoolCWs318ProjectBowenDatabase1MdfContext())
                     {
                         //increment ID to place in table by 1, try and add weapon to table, cycle through special rules and create m-m resolution entries for each that will enable them to be pulled later.
-                        RW.Id = context.RangedWeapons.Count() + 1;
+                        int highestID = context.RangedWeapons.Max(rwsr => rwsr.Id);
+                        RW.Id = highestID + 1;
                         var RangedWeapon = RW;
                         context.RangedWeapons.Add(RangedWeapon);
                         context.SaveChanges();
@@ -86,7 +70,8 @@ namespace WS318_Project_Bowen
                             if (RangedWeapon != null)
                             {
                                 var RWSR = new RangedWeaponSpecialRule();
-                                RWSR.Id = context.RangedWeaponSpecialRules.Count()+1;
+                                int highestSRID = context.RangedWeaponSpecialRules.Max(rwsr => rwsr.Id);
+                                RWSR.Id = highestSRID + 1;
                                 RWSR.RangedWeaponId = RangedWeapon.Id;
                                 RWSR.SpecialRuleId = s.Id;
                                 context.RangedWeaponSpecialRules.Add(RWSR);
@@ -119,7 +104,8 @@ namespace WS318_Project_Bowen
                     using (var context = new GSchoolCWs318ProjectBowenDatabase1MdfContext())
                     {
                         //increment ID to place in table by 1, try and add weapon to table, cycle through special rules and create m-m resolution entries for each that will enable them to be pulled later.
-                        MW.Id = context.MeleeWeapons.Count() + 1;
+                        int highestID = context.MeleeWeapons.Max(rwsr => rwsr.Id);
+                        MW.Id = highestID + 1;
                         var MeleeWeapon = MW;
                         context.MeleeWeapons.Add(MeleeWeapon);
                         context.SaveChanges();
@@ -131,7 +117,8 @@ namespace WS318_Project_Bowen
                             if (MeleeWeapon != null)
                             {
                                 var RWSR = new MeleeWeaponSpecialRule();
-                                RWSR.Id = context.MeleeWeaponSpecialRules.Count() + 1;
+                                int highestSRID = context.MeleeWeaponSpecialRules.Max(rwsr => rwsr.Id);
+                                RWSR.Id = highestSRID + 1;
                                 RWSR.MeleeWeaponId = MeleeWeapon.Id;
                                 RWSR.SpecialRuleId = s.Id;
                                 context.MeleeWeaponSpecialRules.Add(RWSR);
@@ -151,8 +138,10 @@ namespace WS318_Project_Bowen
 
         private void SpecialRuleGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            selection = (SpecialRule)SpecialRuleGrid.SelectedItem;
-            
+            try
+            { selection = (SpecialRule)SpecialRuleGrid.SelectedItem; }
+            catch (Exception ex) { Debug.WriteLine(ex.Message); }
+
         }
 
         private void AddSpecialRule_Click(object sender, RoutedEventArgs e)
