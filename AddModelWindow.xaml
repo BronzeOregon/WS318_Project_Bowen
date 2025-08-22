@@ -33,6 +33,8 @@
                     <TextBox x:Name="TValue" Text="1" Width="20"  />
                     <Label Content="W"  Foreground="White"/>
                     <TextBox x:Name="WValue" Text="1" Width="20"  />
+                    <Label Content="I"  Foreground="White"/>
+                    <TextBox x:Name="IValue" Text="1" Width="20"  />
                     <Label Content="A"  Foreground="White"/>
                     <TextBox x:Name="AValue" Text="1" Width="20"  />
                     <Label Content="Ld"  Foreground="White"/>

@@ -293,16 +293,200 @@ namespace WS318_Project_Bowen
                 if (NonVehicleCheck.IsChecked == true)
                 {
 
+                    NonVehicleModel nvm = new NonVehicleModel();
+                    try
+                    {
+                        int highestID = context.NonVehicleModels.Max(rwsr => rwsr.Id);
+
+                        nvm.Id = highestID + 1;
+                    }
+                    catch (Exception ex) { Debug.WriteLine(ex); nvm.Id = context.NonVehicleModels.Count() + 1; }
 
 
-                } else if (VehicleCheck.IsChecked == true)
+                    nvm.Name = ModelName.Text;
+                    nvm.M = int.Parse(MValue.Text);
+                    nvm.Ws = int.Parse(WSValue.Text);
+                    nvm.Bs = int.Parse(BSValue.Text);
+                    nvm.S = int.Parse(SValue.Text);
+                    nvm.T = int.Parse(TValue.Text);
+                    nvm.W = int.Parse(WValue.Text);
+                    nvm.I = int.Parse(IValue.Text);
+                    nvm.A = int.Parse(AValue.Text);
+                    nvm.Ld = int.Parse(LdValue.Text);
+                    nvm.Cl = int.Parse(ClValue.Text);
+                    nvm.Wp = int.Parse(WpValue.Text);
+                    nvm.Int = int.Parse(IntValue.Text);
+                    nvm.Sv = SvValue.Text;
+                    nvm.Inv = InvValue.Text;
+                    nvm.Type = TypeValue.Text;
+                    nvm.Traits = TraitsValue.Text;
+
+                    try
+                    {
+                        var nvmAdd = nvm;
+                        context.NonVehicleModels.Add(nvmAdd);
+                        context.SaveChanges();
+                        ConfirmationLabel.Content = nvmAdd.Name + " added Successfully!";
+
+                        foreach (RangedWeapon rw in AddedRange)
+                        {
+                            nvmAdd = context.NonVehicleModels.Find(nvm.Id);
+                            if (nvmAdd != null)
+                            {
+                                var nvmRW = new NonVehicleModelRangedWeapon();
+                                try
+                                {
+                                    int highestRWID = context.NonVehicleModelRangedWeapons.Max(r => r.Id);
+                                    nvmRW.Id = highestRWID + 1;
+                                }
+                                catch (Exception ex)
+                                {
+                                    nvmRW.Id = context.NonVehicleModelRangedWeapons.Count() + 1;
+                                }
+
+                                nvmRW.RangedWeaponId = rw.Id;
+                                nvmRW.NonVehicleModelId = nvm.Id;
+
+                                context.NonVehicleModelRangedWeapons.Add(nvmRW);
+                                context.SaveChanges();
+
+
+                            }
+                        }
+
+                        foreach (MeleeWeapon rw in AddedMelee)
+                        {
+                            nvmAdd = context.NonVehicleModels.Find(nvm.Id);
+                            if (nvmAdd != null)
+                            {
+                                var nvmRW = new NonVehicleModelMeleeWeapon();
+                                try
+                                {
+                                    int highestRWID = context.NonVehicleModelMeleeWeapons.Max(r => r.Id);
+                                    nvmRW.Id = highestRWID + 1;
+                                }
+                                catch (Exception ex)
+                                {
+                                    nvmRW.Id = context.NonVehicleModelMeleeWeapons.Count() + 1;
+                                }
+
+                                nvmRW.MeleeWeaponIdtoModel = rw.Id;
+                                nvmRW.NonVehicleModelId = nvm.Id;
+
+                                context.NonVehicleModelMeleeWeapons.Add(nvmRW);
+                                context.SaveChanges();
+
+
+                            }
+                        }
+
+                        foreach (SpecialRule s in AddedRules)
+                        {
+                            nvmAdd = context.NonVehicleModels.Find(nvm.Id);
+                            if (nvmAdd != null)
+                            {
+                                var nvmSR = new NonVehicleModelSpecialRule();
+                                try
+                                {
+                                    int highestSRID = context.NonVehicleModelSpecialRules.Max(rwsr => rwsr.Id);
+                                    nvmSR.Id = highestSRID + 1;
+                                }
+                                catch (Exception ex)
+                                {
+                                    nvmSR.Id = context.NonVehicleModelSpecialRules.Count() + 1;
+                                }
+
+                                nvmSR.NonVehicleModelId = nvmAdd.Id;
+                                nvmSR.SpecialRulesId = s.Id;
+                                context.NonVehicleModelSpecialRules.Add(nvmSR);
+                                context.SaveChanges();
+                            }
+
+                        }
+                    }
+                    catch (Exception ex) { Debug.WriteLine(ex.Message); }
+                }
+                else if (VehicleCheck.IsChecked == true) 
                 {
+                    VehicleModel vm = new VehicleModel();
+                    try
+                    {
+                        int highestID = context.VehicleModels.Max(rwsr => rwsr.Id);
+
+                        vm.Id = highestID + 1;
+                    }
+                    catch (Exception ex) { Debug.WriteLine(ex); vm.Id = context.VehicleModels.Count() + 1; }
 
 
+                    vm.Name = ModelName.Text;
+                    vm.M = int.Parse(VMValue.Text);
+                    vm.Bs = int.Parse(VBSValue.Text);
+                    vm.FrontAv = int.Parse(FrontAVValue.Text);
+                    vm.SideAv = int.Parse(SideAVValue.Text);
+                    vm.RearAv = int.Parse(RearAVValue.Text);
+                    vm.Hp = int.Parse(HPValue.Text);
+                    vm.Capacity = int.Parse(CapacityValue.Text);
+                    vm.Type = VTypesValue.Text;
+                    vm.Traits = VTraitsValue.Text;
 
-                } else
-                {
-                    ConfirmationLabel.Content = "Error. No unit designation selected. Please choose Vehicle or Non-Vehicle.";
+                    try
+                    {
+                        var nvmAdd = vm;
+                        context.VehicleModels.Add(nvmAdd);
+                        context.SaveChanges();
+                        ConfirmationLabel.Content = nvmAdd.Name + " added Successfully!";
+
+                        foreach (RangedWeapon rw in AddedRange)
+                        {
+                            nvmAdd = context.VehicleModels.Find(vm.Id);
+                            if (nvmAdd != null)
+                            {
+                                var nvmRW = new VehicleModelRangedWeapon();
+                                try
+                                {
+                                    int highestRWID = context.VehicleModelRangedWeapons.Max(r => r.Id);
+                                    nvmRW.Id = highestRWID + 1;
+                                }
+                                catch (Exception ex)
+                                {
+                                    nvmRW.Id = context.VehicleModelRangedWeapons.Count() + 1;
+                                }
+
+                                nvmRW.RangedWeaponId = rw.Id;
+                                nvmRW.VehicleModelId = vm.Id;
+
+                                context.VehicleModelRangedWeapons.Add(nvmRW);
+                                context.SaveChanges();
+
+
+                            }
+                        }
+
+                        foreach (SpecialRule s in AddedRules)
+                        {
+                            nvmAdd = context.VehicleModels.Find(vm.Id);
+                            if (nvmAdd != null)
+                            {
+                                var nvmSR = new VehicleModelSpecialRule();
+                                try
+                                {
+                                    int highestSRID = context.VehicleModelSpecialRules.Max(rwsr => rwsr.Id);
+                                    nvmSR.Id = highestSRID + 1;
+                                }
+                                catch (Exception ex)
+                                {
+                                    nvmSR.Id = context.VehicleModelSpecialRules.Count() + 1;
+                                }
+
+                                nvmSR.VehicleModelId = nvmAdd.Id;
+                                nvmSR.SpecialRulesId = s.Id;
+                                context.VehicleModelSpecialRules.Add(nvmSR);
+                                context.SaveChanges();
+                            }
+
+                        }
+                    }
+                    catch (Exception ex) { Debug.WriteLine(ex.Message); }
                 }
             }
         }
