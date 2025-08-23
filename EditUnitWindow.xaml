@@ -1,35 +1,46 @@
-﻿<Window x:Class="WS318_Project_Bowen.AddUnitWindow"
+﻿<Window x:Class="WS318_Project_Bowen.EditUnitWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WS318_Project_Bowen"
         mc:Ignorable="d"
-        Title="AddUnitWindow" Height="600" Width="800">
+        Title="EditUnitWindow" Height="800" Width="1200">
     <Grid>
         <Border Grid.Row="1" Background="#191A2E" CornerRadius="8" Padding="16">
             <StackPanel>
-                <TextBlock Text="Create Unit" FontWeight="Bold" FontSize="18" Foreground="#FFD700"/>
+                <TextBlock Text="Edit/Remove Unit" FontWeight="Bold" FontSize="18" Foreground="#FFD700"/>
                 <Grid Height="80">
                     <StackPanel Orientation="Horizontal">
                         <Label Content="Name" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" HorizontalContentAlignment="Center"/>
                         <TextBox x:Name="UnitName" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Unit Name" VerticalAlignment="Center" Width="120"/>
-                        <Label Content="Non-Vehicle Models" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" HorizontalContentAlignment="Center"/>
+                        <Label Content="Non-Vehicle Units" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" HorizontalContentAlignment="Center"/>
                         <RadioButton x:Name="NonVehicleCheck" HorizontalAlignment="Center" VerticalAlignment="Center" Checked="NonVehicleCheck_Checked"/>
-                        <Label Content="Vehicle Models" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" HorizontalContentAlignment="Center"/>
+                        <Label Content="Vehicle Units" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" HorizontalContentAlignment="Center"/>
                         <RadioButton x:Name="VehicleCheck" HorizontalAlignment="Center" VerticalAlignment="Center" Checked="VehicleCheck_Checked"/>
                     </StackPanel>
                 </Grid>
-                
+
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Unit Selection | Search:"  Foreground="White"/>
+                    <TextBox x:Name="UnitSearchBar" Text="" Width="116" TextChanged="UnitSearchBar_TextChanged"/>
+                    <Button x:Name="AddUnit" Content="Pick Unit" Margin="10,0,0,0" Click="PickUnit_Click"/>
+                </StackPanel>
+                <DataGrid x:Name="UnitGrid" Height="150" SelectionChanged="UnitGrid_SelectionChanged"/>
+
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Model Selection | Search:"  Foreground="White"/>
                     <TextBox x:Name="SearchBar" Text="" Width="116" TextChanged="SearchBar_TextChanged"/>
                     <Button x:Name="AddModel" Content="Add Model" Margin="10,0,0,0" Click="AddModel_Click"/>
+                    <Button x:Name="RemoveModel" Content="Remove Model" Margin="10,0,0,0" Click="RemoveModel_Click"/>
                 </StackPanel>
                 <DataGrid x:Name="ModelGrid" Height="151" SelectionChanged="ModelGrid_SelectionChanged"/>
                 <Label Content="Added Models" Foreground="White" HorizontalAlignment="Center"/>
-                <DataGrid x:Name="AddedModelsGrid" Height="64" SelectionChanged="AddedModelsGrid_SelectionChanged"/>
-                <Button x:Name="CreateUnitButton" Content="Create Unit" Width="96" Height="32" Click="CreateUnit_Click" />
+                <DataGrid x:Name="AddedModelsGrid" Height="100" SelectionChanged="AddedModelsGrid_SelectionChanged"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button x:Name="UpdateUnitButton" Content="Update Unit" Width="96" Height="32" Click="UpdateUnit_Click" />
+                    <Button x:Name="DeleteUnitButton" Content="Delete Unit" Width="96" Height="32" Click="DeleteUnit_Click" />
+                </StackPanel>                
                 <Label x:Name="ConfirmationLabel" Foreground="#FFF56241" FontSize="24" />
             </StackPanel>
         </Border>

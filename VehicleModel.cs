@@ -32,4 +32,11 @@ public partial class VehicleModel
     public virtual ICollection<VehicleModelRangedWeapon> VehicleModelRangedWeapons { get; set; } = new List<VehicleModelRangedWeapon>();
 
     public virtual ICollection<VehicleModelSpecialRule> VehicleModelSpecialRules { get; set; } = new List<VehicleModelSpecialRule>();
+
+    public bool Equals(VehicleModel obj)
+    {
+        if (obj == null) return false;
+        else if (this.Id == obj.Id) return true;
+        else return false;
+    }
 }

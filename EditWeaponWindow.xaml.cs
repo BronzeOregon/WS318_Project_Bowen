@@ -343,7 +343,12 @@ namespace WS318_Project_Bowen
 
                                     
                                     var RWSR = new RangedWeaponSpecialRule();
-                                    RWSR.Id = context.RangedWeaponSpecialRules.Count() + 1;
+
+                                    try {
+                                        int highestRWID = context.RangedWeaponSpecialRules.Max(r => r.Id);
+                                        RWSR.Id = highestRWID + 1;
+                                    } catch { RWSR.Id = context.RangedWeaponSpecialRules.Count() + 1; }
+                                    
                                     RWSR.RangedWeaponId = RangedWeapon.Id;
                                     RWSR.SpecialRuleId = s.Id;
 
@@ -432,7 +437,12 @@ namespace WS318_Project_Bowen
 
 
                                     var RWSR = new MeleeWeaponSpecialRule();
-                                    RWSR.Id = context.MeleeWeaponSpecialRules.Count() + 1;
+                                    try
+                                    {
+                                        int highestRWID = context.MeleeWeaponSpecialRules.Max(r => r.Id);
+                                        RWSR.Id = highestRWID + 1;
+                                    }
+                                    catch { RWSR.Id = context.MeleeWeaponSpecialRules.Count() + 1; }
                                     RWSR.MeleeWeaponId = MeleeWeapon.Id;
                                     RWSR.SpecialRuleId = s.Id;
 

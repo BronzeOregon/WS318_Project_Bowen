@@ -11,7 +11,19 @@ public partial class Unit
 
     public int ModelCount { get; set; }
 
-    public virtual ICollection<UnitNonVehicleModel> UnitNonVehicleModels { get; set; } = new List<UnitNonVehicleModel>();
+    public virtual ICollection<UnitNonVehicleModel> UnitNonVehicleModels { get; set; } = null!;
 
-    public virtual ICollection<UnitVehicleModel> UnitVehicleModels { get; set; } = new List<UnitVehicleModel>();
+    public virtual ICollection<UnitVehicleModel> UnitVehicleModels { get; set; } = null!;
+
+    public bool Equals(Unit obj)
+    {
+        if (obj == null) return false;
+        else if (this.Id == obj.Id) return true;
+        else return false;
+    }
+
+    override public string ToString()
+    {
+        return this.Name;
+    }
 }

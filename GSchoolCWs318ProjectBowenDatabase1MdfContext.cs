@@ -224,15 +224,15 @@ public partial class GSchoolCWs318ProjectBowenDatabase1MdfContext : DbContext
 
             entity.Property(e => e.Id).ValueGeneratedNever();
 
-            entity.HasOne(d => d.NonVehicleModel).WithMany(p => p.UnitNonVehicleModels)
-                .HasForeignKey(d => d.NonVehicleModelId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Unit_NonVehicleModels_NonVehicleModelId");
+            //entity.HasOne(d => d.NonVehicleModel).WithMany(p => p.UnitNonVehicleModels)
+            //    .HasForeignKey(d => d.NonVehicleModelId)
+            //    .OnDelete(DeleteBehavior.ClientSetNull)
+            //    .HasConstraintName("FK_Unit_NonVehicleModels_NonVehicleModelId");
 
-            entity.HasOne(d => d.Unit).WithMany(p => p.UnitNonVehicleModels)
-                .HasForeignKey(d => d.UnitId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Unit_NonVehicleModels_UnitId");
+            //entity.HasOne(d => d.Unit).WithMany(p => p.UnitNonVehicleModels)
+            //    .HasForeignKey(d => d.UnitId)
+            //    .OnDelete(DeleteBehavior.ClientSetNull)
+            //    .HasConstraintName("FK_Unit_NonVehicleModels_UnitId");
         });
 
         modelBuilder.Entity<UnitVehicleModel>(entity =>
@@ -241,15 +241,15 @@ public partial class GSchoolCWs318ProjectBowenDatabase1MdfContext : DbContext
 
             entity.Property(e => e.Id).ValueGeneratedNever();
 
-            entity.HasOne(d => d.Unit).WithMany(p => p.UnitVehicleModels)
-                .HasForeignKey(d => d.UnitId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Unit_VehicleModels_UnitId");
+            //entity.HasOne(d => d.Unit).WithMany(p => p.UnitVehicleModels)
+            //    .HasForeignKey(d => d.UnitId)
+            //    .OnDelete(DeleteBehavior.ClientSetNull)
+            //    .HasConstraintName("FK_Unit_VehicleModels_UnitId");
 
-            entity.HasOne(d => d.VehicleModel).WithMany(p => p.UnitVehicleModels)
-                .HasForeignKey(d => d.VehicleModelId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Unit_VehicleModels_NonVehicleModelId");
+            //entity.HasOne(d => d.VehicleModel).WithMany(p => p.UnitVehicleModels)
+            //    .HasForeignKey(d => d.VehicleModelId)
+            //    .OnDelete(DeleteBehavior.ClientSetNull)
+            //    .HasConstraintName("FK_Unit_VehicleModels_NonVehicleModelId");
         });
 
         modelBuilder.Entity<VehicleModel>(entity =>

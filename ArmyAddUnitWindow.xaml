@@ -1,0 +1,24 @@
+﻿<Window x:Class="WS318_Project_Bowen.ArmyAddUnitWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WS318_Project_Bowen"
+        mc:Ignorable="d"
+        Title="ArmyAddUnitWindow" Height="450" Width="800">
+    <Grid>
+        <Border Grid.Row="1" Background="#191A2E" CornerRadius="8" Padding="16">
+            <StackPanel>
+                <TextBlock Text="Add Unit to Army" FontWeight="Bold" FontSize="18" Foreground="#FFD700"/>
+
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Unit Selection | Search:"  Foreground="White"/>
+                    <TextBox x:Name="UnitSearchBar" Text="" Width="116" TextChanged="UnitSearchBar_TextChanged"/>
+                </StackPanel>
+                <DataGrid x:Name="UnitGrid" Height="298" SelectionChanged="UnitGrid_SelectionChanged"/>
+                <Button Content="Add Unit to Army" Click="Button_Click" Width="200" Margin="0,10,0,0"/>
+            </StackPanel>
+            
+        </Border>
+    </Grid>
+</Window>

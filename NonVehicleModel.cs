@@ -50,4 +50,11 @@ public partial class NonVehicleModel
     public virtual ICollection<NonVehicleModelSpecialRule> NonVehicleModelSpecialRules { get; set; } = new List<NonVehicleModelSpecialRule>();
 
     public virtual ICollection<UnitNonVehicleModel> UnitNonVehicleModels { get; set; } = new List<UnitNonVehicleModel>();
+
+    public bool Equals(NonVehicleModel obj)
+    {
+        if (obj == null) return false;
+        else if (this.Id == obj.Id) return true;
+        else return false;
+    }
 }

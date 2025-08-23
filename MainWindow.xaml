@@ -20,8 +20,8 @@
             <TextBlock Text="Manager" Foreground="White" FontWeight="Bold" FontSize="18" Margin="8,8,8,0"/>
             <StackPanel Margin="0,24,0,0">
                 <TextBlock Text="Toolbox" Foreground="#FFD700" FontWeight="Bold" FontSize="14" Margin="16,0,0,0"/>
-                <Button Content="New Army" Margin="16,8,16,0" Width="168" Height="32" />
-                <Button Content="Load Army" Margin="16,8,16,0" Width="168" Height="32" />
+                <Button Content="New Army" Margin="16,8,16,0" Width="168" Height="32" Click="NewArmy_Click" />
+                <Button Content="Load Army" Margin="16,8,16,0" Width="168" Height="32" Click="LoadArmy_Click" />
                 <Button Content="New Special Rule" Margin="16,8,16,0" Width="168" Height="32" Click="NewSpecialRule_Click" />
                 <Button Content="Edit/Remove Special Rule" Margin="16,8,16,0" Width="168" Height="32" Click="EditSpecialRule_Click" />
                 <Button Content="New Weapon" Margin="16,8,16,0" Width="168" Height="32" Click="NewWeapon_Click" />
@@ -43,42 +43,13 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="64" />
             </Grid.RowDefinitions>
-            <!-- Army Setup Panel -->
-            <StackPanel Orientation="Horizontal" Margin="0,0,0,16" HorizontalAlignment="Left">
-                <TextBlock Text="Legion:" VerticalAlignment="Center" FontWeight="Bold" Margin="0,0,8,0" Foreground="White"/>
-                <ComboBox Width="160" Height="32" Margin="0,0,16,0">
-                    <ComboBoxItem Content="Sons of Horus" />
-                    <ComboBoxItem Content="Imperial Fists" />
-                    <ComboBoxItem Content="Ultramarines" />
-                </ComboBox>
-                <TextBlock Text="Points Limit:" VerticalAlignment="Center" FontWeight="Bold" Margin="0,0,8,0" Foreground="White"/>
-                <TextBox Width="80" Height="32" />
-            </StackPanel>
+                       
             <!-- Army List Panel -->
             <Border Grid.Row="1" Background="#191A2E" CornerRadius="8" Padding="16">
                 <StackPanel>
                     <TextBlock Text="Units" FontWeight="Bold" FontSize="18" Foreground="#FFD700"/>
-                    <ListBox MaxHeight="1000"  Margin="0,8,0,0">
-                        <ListBoxItem>
-                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                <TextBlock Text="Tactical Squad" FontSize="14" VerticalAlignment="Center"/>
-                                <Button Width="32" Height="32" Margin="16,0,0,0">
-                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                        <Image Source="https://img.icons8.com/ios-filled/24/ff4d4d/delete-sign.png" Width="24" Height="24"/>
-                                    </StackPanel>
-                                </Button>
-                            </StackPanel>
-                        </ListBoxItem>
-                        <ListBoxItem>
-                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                <TextBlock Text="Contemptor Dreadnought" FontSize="14" VerticalAlignment="Center"/>
-                                <Button Width="32" Height="32" Margin="16,0,0,0">
-                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                        <Image Source="https://img.icons8.com/ios-filled/24/ff4d4d/delete-sign.png" Width="24" Height="24"/>
-                                    </StackPanel>
-                                </Button>
-                            </StackPanel>
-                        </ListBoxItem>
+                    <ListBox x:Name="UnitPanel" MaxHeight="1000"  Margin="0,8,0,0">
+                        
                     </ListBox>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <Button Content="Add Unit" Width="96" Height="32" Margin="0,8,0,0" Click="AddUnit_Click" />
@@ -90,7 +61,10 @@
             <!-- Summary Panel -->
             <Border Grid.Row="2" Background="#222438" CornerRadius="8" Padding="16" VerticalAlignment="Bottom">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                    <Button Content="Save Army" Height="32" Click="SaveArmy_Click" />
                     <TextBlock Text="Unit Count: " Margin="8,0,0,0" Foreground="White"/>
+                    <TextBlock x:Name="UnitCount"  Margin="8,0,0,0" Foreground="White"/>
+
                 </StackPanel>
             </Border>
         </Grid>
