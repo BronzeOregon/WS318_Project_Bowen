@@ -58,15 +58,27 @@ namespace WS318_Project_Bowen
 
         private void EditModel_Click(object sender, RoutedEventArgs e)
         {
-
+            EditModelWindow popup = new EditModelWindow();
+            popup.ShowDialog();
         }
 
         private void NewUnit_Click(object sender, RoutedEventArgs e)
         {
-
+            AddUnitWindow popup = new AddUnitWindow();
+            popup.ShowDialog();
         }
 
         private void EditUnit_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AddUnit_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void RemoveUnit_Click(object sender, RoutedEventArgs e)
         {
 
         }

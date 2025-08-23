@@ -302,11 +302,6 @@ namespace WS318_Project_Bowen
             try
             {
 
-                using (var context = new GSchoolCWs318ProjectBowenDatabase1MdfContext())
-                {
-
-                }
-
                 if (RangedWeaponCheck.IsChecked == true)
                 {
                     //gather properties from input in ranged weapon boxes.

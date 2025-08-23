@@ -100,7 +100,6 @@ namespace WS318_Project_Bowen
                 using (var context = new GSchoolCWs318ProjectBowenDatabase1MdfContext())
                 {
                     var filteredEntities = context.SpecialRules.Where(s => s.Name.StartsWith(search));
-                    //if (SpecialRuleGrid.IsLoaded){ SpecialRuleGrid.ItemsSource = filteredEntities.ToList(); }
                     SpecialRuleGrid.ItemsSource = filteredEntities.ToList();
                 }
             }
